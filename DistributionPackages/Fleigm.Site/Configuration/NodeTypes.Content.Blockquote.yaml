@@ -1,0 +1,24 @@
+'Fleigm.Site:Content.Blockquote':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Fleigm.Site:Mixin.InspectorGeneral': true
+  ui:
+    label: Blockquote
+    icon: icon-quote-right
+    position: 400
+    inlineEditable: true
+  properties:
+    text:
+      ui:
+        inline:
+          editorOptions:
+            placeholder: 'Enter text here ...'
+            hyphens: true
+    center:
+      type: boolean
+      ui:
+        label: Center Text
+        reloadIfChanged: true
+        inspector:
+          group: general
+          position: 100

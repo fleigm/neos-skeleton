@@ -1,0 +1,13 @@
+Fleigm.Site:Content.Columns.Two:
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: Two Columns
+    icon: icon-columns
+    group: structure
+    position: 100
+  childNodes:
+    column0:
+      type: 'Neos.Neos:ContentCollection'
+    column1:
+      type: 'Neos.Neos:ContentCollection'

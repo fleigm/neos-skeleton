@@ -1,0 +1,35 @@
+prototype(Fleigm.Site:Content.Grid) < prototype(Fleigm.Site:Component.ContentCollection) {
+
+    layout = Neos.Fusion:Case {
+        two {
+            condition = ${q(node).property('layout') == '2'}
+            renderer = 'grid gap-8 grid-cols-1 sm:grid-cols-2'
+        }
+        three {
+            condition = ${q(node).property('layout') == '3'}
+            renderer = 'grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
+        }
+        four {
+            condition = ${q(node).property('layout') == '4'}
+            renderer = 'grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-4'
+        }
+        five {
+            condition = ${q(node).property('layout') == '5'}
+            renderer = 'grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5'
+        }
+        six {
+            condition = ${q(node).property('layout') == '6'}
+            renderer = 'grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6'
+        }
+        fallback {
+            condition = true
+            renderer = 'grid gap-8 grid-cols-1 md:grid-cols-2'
+        }
+    }
+
+    renderer = afx`
+        <div class={props.layout}>
+            <Neos.Neos:ContentCollectionRenderer/>
+        </div>
+    `
+}

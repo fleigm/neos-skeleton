@@ -1,0 +1,27 @@
+'Fleigm.Site:Content.Text':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Fleigm.Site:Mixin.InspectorGeneral': true
+  ui:
+    label: Text
+    icon: icon-file-text
+    position: 100
+    inlineEditable: true
+  properties:
+    text:
+      ui:
+        inline:
+          editorOptions:
+            placeholder: '<p>Enter text here...</p>'
+            hyphens: true
+      options:
+        silhouette: text.free
+    center:
+      type: boolean
+      ui:
+        label: Center Text
+        reloadIfChanged: true
+        inspector:
+          group: general
+          position: 100
+

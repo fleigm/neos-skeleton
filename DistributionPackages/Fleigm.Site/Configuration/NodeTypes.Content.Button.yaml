@@ -1,0 +1,25 @@
+Fleigm.Site:Content.Button:
+  superTypes:
+    'Neos.Neos:Content': true
+    'Fleigm.Site:Mixin.InspectorGeneral': true
+  ui:
+    label: 'Button'
+    icon: 'icon-link'
+    position: 500
+  properties:
+    title:
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Enter title here'
+            autoparagraph: false
+    link:
+      type: string
+      ui:
+        label: 'Link'
+        inspector:
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+          group: general
+
+

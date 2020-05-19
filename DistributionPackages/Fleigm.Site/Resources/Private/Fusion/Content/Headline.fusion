@@ -1,0 +1,7 @@
+prototype(Fleigm.Site:Content.Headline) < prototype(Neos.Neos:ContentComponent) {
+    renderer = Fleigm.Site:Component.Headline {
+        content = Neos.Neos:Editable {
+            property = 'title'
+        }
+    }
+}

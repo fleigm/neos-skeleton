@@ -1,0 +1,14 @@
+prototype(Fleigm.Site:Content.Button) < prototype(Neos.Neos:ContentComponent) {
+    title = Neos.Neos:Editable {
+        property = 'title'
+    }
+    link = ${q(node).property('link')}
+
+
+    renderer = afx`
+        <Carbon.Link:Link link={props.link}
+                          title={props.title}
+                          additionalClasses=""
+        ></Carbon.Link:Link>
+    `
+}

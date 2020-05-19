@@ -1,0 +1,59 @@
+Neos:
+  Flow:
+    mvc:
+      routes:
+        'Neos.Neos':
+          variables:
+            # We prefer URLs without the ".html" suffix
+            defaultUriSuffix: ''
+    error:
+      exceptionHandler:
+        renderingGroups:
+          notFoundExceptions:
+            options:
+              variables:
+                path: '404' # skip suffix in notfound as well
+    session:
+      inactivityTimeout: 0
+  Neos:
+    eventLog:
+      enabled: true
+    userInterface:
+      navigateComponent:
+        nodeTree:
+          loadingDepth: 1
+        structureTree:
+          loadingDepth: 2
+    fusion:
+      autoInclude:
+        Fleigm.Site: true
+
+    Ui:
+      frontendConfiguration:
+        defaultInlineEditor: 'ckeditor5'
+        hotkeys: ~
+  Form:
+    yamlPersistenceManager:
+      savePath: 'resource://Fleigm.Site/Private/Form/'
+    presets:
+      fusion:
+        formElementTypes:
+          'Fleigm.Site:EmailAddress':
+            superTypes:
+              'Neos.Form:FormElement': true
+              'Neos.Form:TextMixin': true
+            validators:
+              - identifier: 'Neos.Flow:EmailAddress'
+    FusionRenderer:
+      fusionAutoInclude:
+        'Fleigm.Site': true
+
+Jonnitto:
+  PhotoSwipe:
+    alwaysInclude: true
+
+Carbon:
+  Image:
+    outputDimensions: false
+
+

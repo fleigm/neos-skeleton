@@ -1,0 +1,11 @@
+prototype(Fleigm.Site:Component.DefaultLayout) < prototype(Neos.Fusion:Component) {
+    content = ''
+
+    renderer = afx`
+        <div class="flex flex-col min-h-screen items-stretch">
+            <Fleigm.Site:Component.Header />
+            {props.content}
+            <Fleigm.Site:Component.Footer />
+        </div>
+    `
+}

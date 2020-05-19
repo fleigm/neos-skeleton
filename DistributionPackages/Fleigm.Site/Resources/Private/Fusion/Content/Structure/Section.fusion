@@ -1,0 +1,15 @@
+prototype(Fleigm.Site:Content.Section) < prototype(Fleigm.Site:Component.ContentCollection) {
+    
+    classes = Neos.Fusion:DataStructure {
+        base = 'section py-12'
+        center = ${q(node).property('center') ? 'text-center' : ''}
+    }
+
+    renderer = afx`
+        <section class={props.classes}>
+            <div class="container">
+                <Neos.Neos:ContentCollectionRenderer/>
+            </div>
+        </section>
+    `
+}

@@ -1,0 +1,13 @@
+prototype(Fleigm.Site:Document.Page) < prototype(Fleigm.Site:Document.AbstractPage) {
+    body.content = Neos.Fusion:Component {
+        main = Neos.Neos:ContentCollection {
+            nodePath = 'main'
+        }
+
+        renderer = afx`
+            <main class="main flex-grow">
+                {props.main}
+            </main>
+        `
+    }
+}

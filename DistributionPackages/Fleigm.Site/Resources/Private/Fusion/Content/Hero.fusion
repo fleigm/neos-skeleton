@@ -1,0 +1,15 @@
+prototype(Fleigm.Site:Content.Hero) < prototype(Neos.Neos:ContentComponent) {
+    text = Neos.Neos:Editable {
+        property = 'text'
+    }
+    image = ${q(node).property('image')}
+
+    renderer = Carbon.Image:Background {
+        asset = ${props.image}
+        class = Neos.Fusion:DataStructure {
+            base = 'hero h-96 bg-cover bg-bottom flex items-center justify-center shadow-md content'
+            center = ${q(node).property('center') ? 'text-center' : ''}
+        }
+        content = ${props.text}
+    }
+}

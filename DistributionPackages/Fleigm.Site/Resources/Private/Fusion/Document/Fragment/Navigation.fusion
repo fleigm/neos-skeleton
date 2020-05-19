@@ -1,0 +1,76 @@
+prototype(Fleigm.Site:Component.Navigation) < prototype(Neos.Fusion:Component) {
+    root = ${site}
+    menuItems = Neos.Neos:MenuItems
+
+    renderer = afx`
+        <nav class="nav">
+            <Fleigm.Site:Component.Dropdown>
+                <Fleigm.Site:Component.Dropdown.Activator>
+                    <button type="button" class="block lg:hidden ml-8 border border-brand-inverse rounded p-2">
+                        <svg class="w-6 h-6 text-brand-inverse fill-current block"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+                        </svg>
+                    </button>
+                </Fleigm.Site:Component.Dropdown.Activator>
+                <Fleigm.Site:Component.Dropdown.Content>
+                    <div class="absolute inset-x-0 bg-transparent-90">
+                        <ul class="p-4">
+                            <Neos.Fusion:Loop items={props.menuItems}>
+                                <li class="py-2 px-3">
+                                    <Neos.Neos:NodeLink node={item.node}
+                                                        attributes.class="block no-underline text-primary text-xl font-light">
+                                        {item.label}
+                                    </Neos.Neos:NodeLink>
+                                    <ul @if.hasChildren={item.subItems} class="">
+                                        <Neos.Fusion:Loop items={item.subItems}>
+                                            <li class="py-2 px-5">
+                                                <Neos.Neos:NodeLink
+                                                    node={item.node}
+                                                    attributes.class="block no-underline text-primary text-base font-light">
+                                                    {item.label}
+                                                </Neos.Neos:NodeLink>
+                                            </li>
+                                        </Neos.Fusion:Loop>
+                                    </ul>
+                                </li>
+                            </Neos.Fusion:Loop>
+                        </ul>
+                    </div>
+                </Fleigm.Site:Component.Dropdown.Content>
+            </Fleigm.Site:Component.Dropdown>
+            <div class="lg:block hidden">
+                <ul class="flex">
+                    <Neos.Fusion:Loop items={props.menuItems}>
+                        <li class="relative group">
+                            <Neos.Neos:NodeLink node={item.node}
+                                                attributes.class="block py-2 px-3 no-underline text-primary text-lg font-light">
+                                {item.label}
+                            </Neos.Neos:NodeLink>
+                            <ul @if.hasChildren={item.subItems}
+                                class="hidden group-hover:block absolute bg-white border rounded shadow-md w-64 -ml-16 group-hover:block">
+                                <Neos.Fusion:Loop items={item.subItems}>
+                                    <li>
+                                        <Neos.Neos:NodeLink
+                                            node={item.node}
+                                            attributes.class="block py-2 px-5 no-underline text-primary text-base font-light">
+                                            {item.label}
+                                        </Neos.Neos:NodeLink>
+                                    </li>
+                                </Neos.Fusion:Loop>
+                            </ul>
+                        </li>
+                    </Neos.Fusion:Loop>
+                </ul>
+            </div>
+        </nav>
+    `
+
+    @cache {
+        mode = 'cached'
+        entryIdentifier.node = ${documentNode}
+        entryTags {
+            1 = ${Neos.Caching.nodeTypeTag('Neos.Neos:Document', documentNode)}
+        }
+    }
+}

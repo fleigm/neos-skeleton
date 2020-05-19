@@ -1,0 +1,13 @@
+prototype(Fleigm.Site:Component.Dropdown) < prototype(Neos.Fusion:Augmenter) {
+    x-data='dropdown()'
+}
+
+prototype(Fleigm.Site:Component.Dropdown.Activator) < prototype(Neos.Fusion:Augmenter) {
+    x-on:click='toggle'
+}
+
+prototype(Fleigm.Site:Component.Dropdown.Content) < prototype(Neos.Fusion:Augmenter) {
+    x-show='isOpen()'
+    style='display: none;'
+    //'x-on:click.away'='close'
+}

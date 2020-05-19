@@ -1,0 +1,16 @@
+prototype(Fleigm.Site:Component.BlockQuote) < prototype(Neos.Fusion:Component) {
+
+    content = ''
+    class = ''
+
+    renderer = Neos.Fusion:Tag {
+        tagName = 'div'
+        attributes.class = Neos.Fusion:DataStructure {
+            base = 'content mb-8'
+            additionalClasses = ${props.class}
+        }
+        content = afx`
+            <blockquote>{props.content}</blockquote>
+        `
+    }
+}

@@ -1,0 +1,8 @@
+prototype(Fleigm.Site:Content.Text) < prototype(Neos.Neos:ContentComponent) {
+    renderer = Fleigm.Site:Component.Text {
+        class = ${q(node).property('center') ? 'text-center' : ''}
+        content = Neos.Neos:Editable {
+            property = 'text'
+        }
+    }
+}

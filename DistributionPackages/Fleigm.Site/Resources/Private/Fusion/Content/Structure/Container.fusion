@@ -1,0 +1,8 @@
+prototype(Fleigm.Site:Content.Container) < prototype(Fleigm.Site:Component.ContentCollection) {
+
+    renderer = afx`
+        <div class="">
+            <Neos.Neos:ContentCollectionRenderer/>
+        </div>
+    `
+}

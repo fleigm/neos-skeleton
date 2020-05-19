@@ -1,0 +1,8 @@
+prototype(Fleigm.Site:TextWithImage) < prototype(Neos.Neos:ContentComponent) {
+
+
+
+    renderer = afx`
+
+    `
+}

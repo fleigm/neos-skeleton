@@ -1,0 +1,25 @@
+FROM php:7.4-fpm
+
+RUN apt-get update \
+    # install GraphicsMagick
+	&& apt-get install -y \
+		libgraphicsmagick1-dev graphicsmagick zlib1g-dev libicu-dev gcc g++ --no-install-recommends \
+	&& pecl -vvv install gmagick-beta && docker-php-ext-enable gmagick \
+    # pdo_mysql
+    && docker-php-ext-install pdo_mysql \
+    # redis
+    && pecl install redis && docker-php-ext-enable redis \
+	# intl
+	&& docker-php-ext-configure intl && docker-php-ext-install intl \
+    # cleanup
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+
+WORKDIR /var/www
+
+# Copy existing application directory contents
+COPY . /var/www
+
+# Expose port 9000 and start php-fpm server
+EXPOSE 9000
+CMD ["php-fpm"]

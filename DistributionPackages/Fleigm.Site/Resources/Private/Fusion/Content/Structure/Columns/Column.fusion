@@ -1,0 +1,10 @@
+prototype(Fleigm.Site:Content.Column) < prototype(Neos.Neos:ContentComponent) {
+
+    renderer = afx`
+        <div class="column">
+            <Neos.Neos:ContentCollectionRenderer/>
+        </div>
+    `
+
+    @cache.entryTags.parent = ${Neos.Caching.nodeTag(q(node).parent())}
+}

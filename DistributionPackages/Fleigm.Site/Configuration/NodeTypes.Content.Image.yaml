@@ -1,0 +1,14 @@
+'Fleigm.Site:Content.Image':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Carbon.Image:Image': true
+    'Carbon.Image:AlternativeText': true
+    'Carbon.Image:Title': true
+    'Carbon.Image:Lightbox': true
+    'Carbon.Image:Caption': true
+    'Carbon.Image:Link': true
+    'Carbon.Image:BackendLabel': true
+  ui:
+    label: Image
+    icon: icon-picture
+    position: 300

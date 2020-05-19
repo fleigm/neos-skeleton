@@ -1,0 +1,19 @@
+prototype(Fleigm.Site:Content.Image) < prototype(Neos.Neos:ContentComponent) {
+    asset = ${q(node).property('image')}
+    title = ${q(node).property('title')}
+    alternativeText = ${q(node).property('alternativeText')}
+    caption = ${q(node).property('caption')}
+    lightbox = ${q(node).property('lightbox')}
+    link = ${q(node).property('link')}
+
+    renderer = Carbon.Image:Tag {
+        asset = ${props.asset}
+        title = ${props.title}
+        alternativeText = ${props.alternativeText}
+        caption = ${props.caption}
+        lightbox = ${props.lightbox}
+        link = ${props.link}
+        class = 'w-full shadow'
+    }
+}
+

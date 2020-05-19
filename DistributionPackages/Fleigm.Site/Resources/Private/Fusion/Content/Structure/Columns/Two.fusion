@@ -1,0 +1,17 @@
+prototype(Fleigm.Site:Content.Columns.Two) < prototype(Neos.Neos:ContentComponent) {
+
+    column0 = Neos.Neos:ContentCollection {
+        nodePath = 'column0'
+    }
+
+    column1 = Neos.Neos:ContentCollection {
+        nodePath = 'column1'
+    }
+
+    renderer = afx`
+        <div class="grid gap-8 grid-cols-1 sm:grid-cols-2">
+            {props.column0}
+            {props.column1}
+        </div>
+    `
+}

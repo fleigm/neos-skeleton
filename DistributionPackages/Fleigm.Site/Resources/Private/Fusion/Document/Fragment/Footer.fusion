@@ -1,0 +1,51 @@
+prototype(Fleigm.Site:Component.Footer) < prototype(Neos.Neos:ContentComponent) {
+    @context.node = ${site}
+    year = ${Date.format(Date.now(), 'Y')}
+
+    footerInfo = Neos.Neos:Editable {
+        node = ${site}
+        property = 'footerInfo'
+    }
+
+    footerItems = Neos.Neos:MenuItems {
+        entryLevel = 2
+        maximumLevels = 1
+        startingPoint = ${q(site).children('[uriPathSegment="footer"]').get(0)}
+    }
+
+    languageMenu = Neos.Neos:DimensionMenu {
+        dimension = 'language'
+        includeAllPresets = true
+    }
+
+    renderer = afx`
+        <footer class="main-footer py-16 justify-end bg-brand-inverse text-brand">
+            <div class="container">
+                <div class="flex justify-between">
+                    <nav @if.hasFooterItems={props.footerItems} class="" role="navigation">
+                        <ul class="flex flex-col space-8">
+                            <Neos.Fusion:Loop items={props.footerItems}>
+                                <li>
+                                    <Carbon.Link:Link node={item.node} additionalClass="text-base">{item.label}
+                                    </Carbon.Link:Link>
+                                </li>
+                            </Neos.Fusion:Loop>
+                        </ul>
+                    </nav>
+                    <div class="content text-sm">
+                        {props.footerInfo}
+                    </div>
+                    <div class="flex flex-col justify-between">
+                        <div class="text-sm mb-4">
+                            {props.languageMenu}
+                        </div>
+                        <div class="flex items-end text-sm">&copy; {props.year}</div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </footer>
+    `
+}

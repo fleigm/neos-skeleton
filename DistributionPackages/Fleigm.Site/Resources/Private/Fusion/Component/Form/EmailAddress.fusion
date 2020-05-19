@@ -1,0 +1,12 @@
+prototype(Fleigm.Site:EmailAddress) < prototype(Neos.Form.FusionRenderer:FormElement) {
+    fieldContainer {
+        field {
+            tagName = 'input'
+            attributes {
+                type = 'email'
+                name = ${elementName}
+                value = ${elementValue}
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+'Fleigm.Site:Document.Page':
+  superTypes:
+    'Fleigm.Site:Document.AbstractPage': true
+  ui:
+    label: i18n
+    icon: icon-file-o
+    position: 100

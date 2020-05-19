@@ -1,0 +1,14 @@
+prototype(Fleigm.Site:Component.Text) < prototype(Neos.Fusion:Component) {
+
+    content = ''
+    class = ''
+
+    renderer = Neos.Fusion:Tag {
+        tagName = 'div'
+        attributes.class = Neos.Fusion:DataStructure {
+            base = 'content mb-8'
+            additional = ${props.class}
+        }
+        content = ${props.content}
+    }
+}

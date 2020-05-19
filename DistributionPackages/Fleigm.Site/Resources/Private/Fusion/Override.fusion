@@ -1,0 +1,42 @@
+###
+## Add your overrides to 3rd party fusion code here
+###
+
+prototype(Neos.NodeTypes.Form:Form) {
+    presetName = 'fusion'
+}
+
+prototype(Neos.Form.FusionRenderer:AbstractSection) < prototype(Neos.Fusion:Tag) {
+    tagName = 'div'
+    attributes.class = Neos.Fusion:DataStructure {
+        base = 'form-section'
+        additional = ${containerElement.properties.elementClassAttribute}
+    }
+}
+
+
+prototype(Neos.Form.FusionRenderer:FormElement) {
+    @process.wrap = Neos.Fusion:Tag {
+        tagName = 'div'
+        attributes.class = Neos.Fusion:DataStructure {
+            base = 'form-field'
+            error = ${hasValidationErrors ? 'error' : ''}
+            formField = ${element.properties.formFieldClassAttribute}
+        }
+        content = ${value}
+    }
+}
+
+prototype(Neos.Form:DatePicker) < prototype(Neos.Form.FusionRenderer:FormElement) {
+    fieldContainer {
+        field {
+            tagName = 'input'
+            attributes {
+                type = 'date'
+                name = ${elementName}
+                value = ${elementValue ? Date.format(elementValue, 'Y-m-d') : ''}
+            }
+        }
+    }
+}
+

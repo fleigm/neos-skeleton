@@ -1,0 +1,52 @@
+# NEOS DEVELOPMENT ENVIRONMENT
+#
+# For instructions how to use docker-compose, see
+# https://docs.neos.io/cms/installation-development-setup/docker-and-docker-compose-setup#docker-compose-cheat-sheet
+version: '3.5'
+services:
+  # Neos CMS
+  neos:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    environment:
+      VIRTUAL_HOST: mohr-gmbh.fleigm.de
+      FLOW_CONTEXT: 'Production'
+    volumes:
+      - ./:/var/www
+    networks:
+      - mohr-network
+
+
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: always
+    tty: true
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./:/var/www/
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - mohr-network
+
+
+  # DB
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 'db'
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - mohr-network
+
+volumes:
+  db:
+
+#Docker Networks
+networks:
+  mohr-network:
+    driver: bridge
