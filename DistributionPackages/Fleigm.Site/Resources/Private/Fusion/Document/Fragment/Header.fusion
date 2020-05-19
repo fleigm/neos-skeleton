@@ -3,15 +3,10 @@ prototype(Fleigm.Site:Component.Header) < prototype(Neos.Fusion:Component) {
         node = ${site}
     }
 
-    logo = Neos.Fusion:ResourceUri {
-        path = 'resource://Fleigm.Site/Public/Frontend/images/top_logo.gif'
-    }
-
     renderer = afx`
         <header class="main-header w-full bg-transparent-90 shadow-md border-t-4 border-brand">
             <div class="container flex justify-between items-center">
                 <a class="flex justify-center items-center bg-brand py-4 px-8 -mx-4" href={props.homeLink}>
-                    <img class="" src={props.logo}/>
                 </a>
                 <Fleigm.Site:Component.Navigation startingPoint={site} />
             </div>
