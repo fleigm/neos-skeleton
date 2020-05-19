@@ -1,5 +1,5 @@
 {
-    "name": "codeq/skeleton",
+    "name": "fleigm/skeleton",
     "description": "Best practice skeleton for Neos",
     "config": {
         "vendor-dir": "Packages/Libraries",
