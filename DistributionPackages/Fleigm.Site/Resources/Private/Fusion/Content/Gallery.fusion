@@ -2,11 +2,12 @@ prototype(Fleigm.Site:Content.Gallery) < prototype(Neos.Neos:ContentComponent) {
     images = ${q(node).property('images')}
 
     renderer = afx`
-        <div class="gallery grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+        <div class="gallery grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             <Neos.Fusion:Loop items={props.images}>
                 <Carbon.Image:Tag asset={item}
                                   lightbox={true}
                                   fixedSize={true}
+                                  preset="Fleigm.Site:Gallery"
                                   class="shadow w-full h-64 object-cover"
                 ></Carbon.Image:Tag>
             </Neos.Fusion:Loop>

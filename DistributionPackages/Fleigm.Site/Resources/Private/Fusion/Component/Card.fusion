@@ -1,0 +1,20 @@
+prototype(Fleigm.Site:Component.Card) < prototype(Neos.Fusion:Component) {
+
+    animate = false
+
+    content = ''
+
+    class = Neos.Fusion:DataStructure
+
+
+    renderer = Neos.Fusion:Tag {
+        attributes.class = Neos.Fusion:DataStructure {
+            base = 'shadow-md border relative'
+            animation = 'transform hover:-translate-y-1 transition duration-500'
+            animation.@if.enabled = ${props.animate}
+            additionClass = ${props.class}
+        }
+
+        content = ${props.content}
+    }
+}

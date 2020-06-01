@@ -21,9 +21,9 @@ Neos:
     userInterface:
       navigateComponent:
         nodeTree:
-          loadingDepth: 1
-        structureTree:
           loadingDepth: 2
+        structureTree:
+          loadingDepth: 4
     fusion:
       autoInclude:
         Fleigm.Site: true
@@ -32,6 +32,11 @@ Neos:
       frontendConfiguration:
         defaultInlineEditor: 'ckeditor5'
         hotkeys: ~
+  Media:
+    thumbnailPresets:
+      Fleigm.Site:Gallery:
+        maximumWidth: 500
+        maximumHeight: 500
   Form:
     yamlPersistenceManager:
       savePath: 'resource://Fleigm.Site/Private/Form/'
@@ -56,4 +61,7 @@ Carbon:
   Image:
     outputDimensions: false
 
+MOC:
+  ImageOptimizer:
+    useGlobalBinary: true
 

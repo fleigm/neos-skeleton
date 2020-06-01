@@ -13,6 +13,7 @@ prototype(Fleigm.Site:Content.Image) < prototype(Neos.Neos:ContentComponent) {
         caption = ${props.caption}
         lightbox = ${props.lightbox}
         link = ${props.link}
+        preset = 'Neos.Media.Browser:Preview'
         class = 'w-full shadow'
     }
 }

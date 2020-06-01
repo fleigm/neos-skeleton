@@ -30,7 +30,9 @@
 
         "jonnitto/photoswipe": "^3.2",
         "carbon/image": "^2.1",
-        "jonnitto/assetlist": "^3.0"
+        "jonnitto/assetlist": "^3.0",
+        "flowpack/listable": "^3.4",
+        "moc/imageoptimizer": "~4.0"
     },
     "extra": {
         "neos": {

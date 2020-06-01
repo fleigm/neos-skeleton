@@ -1,0 +1,10 @@
+'Fleigm.Site:Group.Content.General':
+  abstract: true
+  ui:
+    group: general
+
+'Fleigm.Site:Group.Content.Structure':
+  abstract: true
+  ui:
+    group: structure
+

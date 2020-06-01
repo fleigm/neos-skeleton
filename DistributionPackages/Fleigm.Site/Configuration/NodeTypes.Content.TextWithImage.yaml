@@ -1,10 +1,42 @@
 Fleigm.Site:Content.TextWithImage:
   superTypes:
     'Neos.Neos:Content': true
-    'Neos.NodeTypes.BaseMixins:TextMixin': true
-    'Neos.NodeTypes.BaseMixins:ImageMixin': true
-    'Neos.NodeTypes.BaseMixins:ImageCaptionMixin': true
+    'Fleigm.Site:Group.Content.General': true
+    'Fleigm.Site:Mixin.InspectorGeneral': true
+    'Carbon.Image:Image': true
+    'Carbon.Image:AlternativeText': true
+    'Carbon.Image:Title': true
+    'Carbon.Image:Lightbox': true
+    'Carbon.Image:Caption': true
+    'Carbon.Image:Link': true
   ui:
     label: Text mit Bild
     icon: icon-picture
     position: 200
+  properties:
+    text:
+      ui:
+        inline:
+          editorOptions:
+            placeholder: '<p>Enter text here...</p>'
+            hyphens: true
+      options:
+        silhouette: fleigm.text.free
+    alignment:
+      type: string
+      defaultValue: left
+      ui:
+        label: Bildausrichtung
+        reloadIfChanged: true
+        inspector:
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              left:
+                label: Links im Text
+              right:
+                label: Rechts im Text
+          group: image
+          position: 5
+
+

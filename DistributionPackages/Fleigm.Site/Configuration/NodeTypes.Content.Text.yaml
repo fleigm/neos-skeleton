@@ -1,6 +1,7 @@
 'Fleigm.Site:Content.Text':
   superTypes:
     'Neos.Neos:Content': true
+    'Fleigm.Site:Group.Content.General': true
     'Fleigm.Site:Mixin.InspectorGeneral': true
   ui:
     label: Text

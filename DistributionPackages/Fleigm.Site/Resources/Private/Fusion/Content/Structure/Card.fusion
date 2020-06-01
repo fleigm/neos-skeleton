@@ -1,0 +1,25 @@
+prototype(Fleigm.Site:Content.Card) < prototype(Fleigm.Site:Component.ContentCollection) {
+
+    link = ${q(node).property('link')}
+    image = ${q(node).property('image')}
+
+    renderer = afx`
+        <div class="shadow-md border transform hover:-translate-y-1 transition duration-500 relative">
+            <Carbon.Link:Link link={props.link}
+                              renderDefaultTagIfNoLink={true}
+                              defaultTagName="div"
+                              additionalClass="block h-full">
+                <div>
+                    <div>
+                        <Carbon.Image:Tag asset={props.image}
+                                          class="w-full"
+                        ></Carbon.Image:Tag>
+                    </div>
+                    <div class="p-2 relative">
+                        <Neos.Neos:ContentCollectionRenderer/>
+                    </div>
+                </div>
+            </Carbon.Link:Link>
+        </div>
+    `
+}

@@ -1,13 +1,33 @@
-prototype(Fleigm.Site:Component.Dropdown) < prototype(Neos.Fusion:Augmenter) {
-    x-data='dropdown()'
+prototype(Fleigm.Site:Component.Dropdown) < prototype(Neos.Fusion:Fragment) {
+    openOnHover = false
+
+    @context {
+        openOnHover = ${this.openOnHover}
+    }
+
+    @process.augment = Neos.Fusion:Augmenter {
+        x-data='dropdown()'
+        x-on:mouseleave='close'
+        x-on:mouseleave.@if.openOnHover = ${openOnHover}
+    }
 }
 
 prototype(Fleigm.Site:Component.Dropdown.Activator) < prototype(Neos.Fusion:Augmenter) {
     x-on:click='toggle'
+    x-on:mouseenter='open'
+    x-on:mouseenter.@if.openOnHover = ${openOnHover}
 }
 
 prototype(Fleigm.Site:Component.Dropdown.Content) < prototype(Neos.Fusion:Augmenter) {
     x-show='isOpen()'
     style='display: none;'
-    //'x-on:click.away'='close'
+    'x-on:click#DOT#away'='close'
+    x-transition:enter='transition ease-out duration-200'
+    x-transition:enter-start='opacity-0 transform scale-90'
+    x-transition:enter-end='opacity-100 transform scale-100'
+    x-transition:leave='transition ease-in duration-200'
+    x-transition:leave-start='opacity-100 transform scale-100'
+    x-transition:leave-end='opacity-0 transform scale-90'
+
+    @process.replaceDot = ${String.replace(value, '#DOT#', '.')}
 }

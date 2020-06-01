@@ -1,5 +1,16 @@
 @tailwind base;
 
+@import "../fonts/inter/font.less";
+@import "container.less";
+@import "typogrophy.less";
+@import "form.less";
+
 @tailwind components;
 
 @tailwind utilities;
+
+.neos-contentcollection {
+    :last-child {
+        @apply mb-0 !important;
+    }
+}

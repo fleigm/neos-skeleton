@@ -1,9 +1,13 @@
 prototype(Fleigm.Site:Component.Headline) < prototype(Neos.Fusion:Component) {
-    content = ''
+    title = ''
+    subtitle = null
 
     renderer = afx`
-        <div class="content headline">
-            <h1 class="border-b-2 border-brand">{props.content}</h1>
+        <div class="headline mb-4">
+            <h1 class="text-3xl font-light text-theme">{props.title}</h1>
+            <div @if.show={props.subtitle} class="text-lg font-light text-secondary">
+                {props.subtitle}
+            </div>
         </div>
     `
 }

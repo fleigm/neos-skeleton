@@ -1,13 +1,21 @@
 'Fleigm.Site:Content.Headline':
   superTypes:
     'Neos.Neos:Content': true
+    'Fleigm.Site:Group.Content.General': true
   ui:
     label: Headline
     icon: 'icon-header'
     position: 400
   properties:
-    'title':
+    title:
       type: string
       defaultValue: 'Enter headline here'
       ui:
         inlineEditable: true
+    subtitle:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Enter optionally subtitle here'

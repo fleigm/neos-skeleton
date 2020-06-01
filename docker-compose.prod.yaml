@@ -10,43 +10,52 @@ services:
       context: .
       dockerfile: Dockerfile.prod
     environment:
-      VIRTUAL_HOST: mohr-gmbh.fleigm.de
       FLOW_CONTEXT: 'Production'
+      FLOW_HTTP_TRUSTED_PROXIES: '*'
     volumes:
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
       - ./:/var/www
     networks:
-      - mohr-network
+      - internal-network
 
-
-  webserver:
+  web:
     image: nginx:alpine
-    container_name: webserver
+    container_name: web
     restart: always
     tty: true
-    ports:
-      - 80:80
-      - 443:443
+    environment:
+      VIRTUAL_HOST: INSERT_HOST_HERER
+      VIRTUAL_PORT: 80
+      LETSENCRYPT_HOST: INSERT_HOST_HERER
+      LETSENCRYPT_EMAIL: admin@fleigm.de
+    expose:
+      - 80
     volumes:
       - ./:/var/www/
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
     networks:
-      - mohr-network
-
+      - internal-network
+      - nginx-proxy
 
   # DB
   db:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: 'db'
+      MYSQL_ROOT_HOST: '%'
     volumes:
       - db:/var/lib/mysql
+      - ./docker/mysql.cnf:/etc/mysql/conf.d/mysql.cnf
     networks:
-      - mohr-network
+      - internal-network
 
 volumes:
   db:
 
 #Docker Networks
 networks:
-  mohr-network:
+  internal-network:
     driver: bridge
+  nginx-proxy:
+    external: true
+    name: nginx-proxy

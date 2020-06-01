@@ -1,6 +1,7 @@
 'Fleigm.Site:Content.Image':
   superTypes:
     'Neos.Neos:Content': true
+    'Fleigm.Site:Group.Content.General': true
     'Carbon.Image:Image': true
     'Carbon.Image:AlternativeText': true
     'Carbon.Image:Title': true

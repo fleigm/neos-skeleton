@@ -1,0 +1,19 @@
+Fleigm.Site:Content.Gallery:
+  superTypes:
+    'Neos.Neos:Content': true
+    'Fleigm.Site:Mixin.InspectorGeneral': true
+    'Fleigm.Site:Group.Content.General': true
+  ui:
+    label: Gallery
+    icon: icon-images
+    position: 600
+  properties:
+    images:
+      type: array<Neos\Media\Domain\Model\Asset>
+      ui:
+        label: Images
+        reloadIfChanged: true
+        inspector:
+          group: 'general'
+          position: 50
+

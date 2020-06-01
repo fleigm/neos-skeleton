@@ -12,6 +12,7 @@ services:
     environment:
       FLOW_CONTEXT: 'Development/Docker'
     volumes:
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
       - ./composer.json:/app/composer.json:cached
       - ./composer.lock:/app/composer.lock:cached
       - ./Configuration/:/app/Configuration/:cached
@@ -21,7 +22,7 @@ services:
       # WARNING: you need to add all packages from Distribution packages here ONE BY ONE, see the notice below for explanation.
       - ./Packages/Sites/:/app/Packages/Sites/:cached
     ports:
-      - 8082:8082
+      - 8081:8081
   # DB
   db:
     image: mysql:8.0
@@ -30,7 +31,7 @@ services:
     volumes:
       - db:/var/lib/mysql
     ports:
-      - 13306:3306
+      - 13306
 
 volumes:
   db:

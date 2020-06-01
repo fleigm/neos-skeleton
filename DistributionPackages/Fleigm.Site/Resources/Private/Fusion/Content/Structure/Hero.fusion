@@ -1,0 +1,26 @@
+prototype(Fleigm.Site:Content.Hero) < prototype(Fleigm.Site:Component.ContentCollection) {
+    image = ${q(node).property('image')}
+
+    title = Neos.Neos:Editable {
+        property = 'title'
+    }
+
+    subtitle = Neos.Neos:Editable {
+        property = 'subtitle'
+    }
+
+
+    renderer = afx`
+        <Carbon.Image:Background
+            asset={props.image}
+            class="shadow-md h-96 bg-cover">
+            <div class="container flex flex-col justify-center h-full">
+                <header class="text-primary-inverse">
+                    <h1 class="text-6xl font-bold">{props.title}</h1>
+                    <span class="text-3xl font-bold">{props.subtitle}</span>
+                </header>
+            </div>
+
+        </Carbon.Image:Background>
+    `
+}

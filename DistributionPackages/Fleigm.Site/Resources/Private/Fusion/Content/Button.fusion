@@ -2,13 +2,19 @@ prototype(Fleigm.Site:Content.Button) < prototype(Neos.Neos:ContentComponent) {
     title = Neos.Neos:Editable {
         property = 'title'
     }
+
     link = ${q(node).property('link')}
 
+    classes = Neos.Fusion:DataStructure {
+        base = 'inline-block rounded px-5 py-3 text-primary-inverse bg-primary shadow-md'
+    }
 
     renderer = afx`
         <Carbon.Link:Link link={props.link}
                           title={props.title}
-                          additionalClasses=""
-        ></Carbon.Link:Link>
+                          additionalClass={props.classes}
+        >
+            {props.title}
+        </Carbon.Link:Link>
     `
 }

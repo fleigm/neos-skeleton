@@ -2,6 +2,7 @@ Fleigm.Site:Content.Button:
   superTypes:
     'Neos.Neos:Content': true
     'Fleigm.Site:Mixin.InspectorGeneral': true
+    'Fleigm.Site:Group.Content.General': true
   ui:
     label: 'Button'
     icon: 'icon-link'

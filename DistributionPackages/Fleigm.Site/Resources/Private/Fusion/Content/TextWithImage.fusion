@@ -1,8 +1,25 @@
-prototype(Fleigm.Site:TextWithImage) < prototype(Neos.Neos:ContentComponent) {
+prototype(Fleigm.Site:Content.TextWithImage) < prototype(Neos.Neos:ContentComponent) {
 
-
-
-    renderer = afx`
-
-    `
+    renderer = Fleigm.Site:Component.Text {
+        class = ${q(node).property('center') ? 'text-center' : ''}
+        content = Neos.Fusion:Array {
+            image = Carbon.Image:Tag {
+                asset = ${q(node).property('image')}
+                title = ${q(node).property('title')}
+                alternativeText = ${q(node).property('alternativeText')}
+                caption = ${q(node).property('caption')}
+                lightbox = ${q(node).property('lightbox')}
+                link = ${q(node).property('link')}
+                preset = 'Neos.Media.Browser:Preview'
+                class = Neos.Fusion:DataStructure {
+                    base = 'shadow my-2 '
+                    alignment = ${q(node).property('alignment') == 'left' ? 'float-left mr-4' : 'float-right ml-4'}
+                    responsive = 'w-1/2 md:w-1/3'
+                }
+            }
+            text = Neos.Neos:Editable {
+                property = 'text'
+            }
+        }
+    }
 }
